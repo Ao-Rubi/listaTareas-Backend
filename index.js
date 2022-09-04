@@ -1,6 +1,6 @@
 import express from "express";
-// import morgan from "morgan";
-// import cors from "cors";
+import morgan from "morgan";
+import cors from "cors";
 
 // Instancia de express
 const app = express();
@@ -14,13 +14,19 @@ app.listen(app.get("port"), ()=> {
 });
 
 //Middleware
+app.use(morgan("dev")); // da info en la terminal
+app.use(cors()); // Permite recibir peticiones remotas
 
-
+// Middlewares que sirven para procesar objetos json
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+// Cargar un archivo estatico
+app.use(express.static("./public"))
 
 //rutas
-app.get("/", (req, res) =>{
-    res.send("Primera peticion get")
-})
+// app.get("/", (req, res) =>{
+//     res.send("Primera peticion get")
+// })
 
 app.get("/prueba", (req, res) =>{
     res.send("Segunda peticion get")
