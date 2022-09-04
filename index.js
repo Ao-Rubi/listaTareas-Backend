@@ -13,3 +13,15 @@ app.listen(app.get("port"), ()=> {
     console.log("Estamos en el puerto " + app.get("port"))
 });
 
+//Middleware
+
+
+
+//rutas
+app.get("/", (req, res) =>{
+    res.send("Primera peticion get")
+})
+
+app.get("/prueba", (req, res) =>{
+    res.send("Segunda peticion get")
+})
