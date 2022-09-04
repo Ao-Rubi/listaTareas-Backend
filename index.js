@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import "./src/database"
+import router from "./src/routes/listas.routes";
 
 // Instancia de express
 const app = express();
@@ -25,10 +26,4 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static("./public"))
 
 //rutas
-// app.get("/", (req, res) =>{
-//     res.send("Primera peticion get")
-// })
-
-app.get("/prueba", (req, res) =>{
-    res.send("Segunda peticion get")
-})
+app.use("/apilistas", router)
