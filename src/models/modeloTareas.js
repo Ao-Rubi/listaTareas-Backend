@@ -1,32 +1,9 @@
 import mongoose, {Schema} from "mongoose";
 
 const tareaSchema = new Schema({
-    nombre: {
+    tarea: {
         type: String, 
-        require: true,
-        minLength: 2,
-        maxLength: 20,
-    },
-
-    apellido: {
-        type: String, 
-        require: true,
-        minLength: 2,
-        maxLength: 15,
-    },
-
-    DNI: {
-        type: Number, 
-        require: true,
-        min: 10000000,
-        max: 99999999,
-        unique: true,
-    },
-
-    email: {
-        type: String,
-        require: true,
-        unique: true,
+        require: true
     }
 });
 

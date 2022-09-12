@@ -5,8 +5,8 @@ const router = Router();
 
 // Crear ruta de las listas de tareas
 // dominio + /apilistas + /listas
-router.route("/").get(listarElementos).post(crearElemento)
+router.route("/elementos").get(listarElementos).post(crearElemento)
 
-router.route("/elemento/:id").get(obtenerElemento).put(editarElemento).delete(borrarElemento)
+router.route("/elementos/:id").get(obtenerElemento).put(editarElemento).delete(borrarElemento)
 
 export default router;
