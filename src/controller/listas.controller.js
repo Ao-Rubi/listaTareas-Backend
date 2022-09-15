@@ -58,10 +58,33 @@ export const obtenerElemento = async (req, res) =>{
     }
 }
 
-export const editarElemento = (req, res) =>{
-    res.send("Envio el dato de una tarea para editar")
+export const editarElemento = async (req, res) =>{
+    try {
+        //Validacion
+        //Buscar la tarea por el id y luego modificar el mismo
+        await Tarea.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({
+            mensaje: "Tarea editada correctamente"
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({
+            mensaje: "Error al editar la tarea"
+        })
+    }
 }
 
-export const borrarElemento = (req, res) =>{
-    res.send("Borro un elemento de la lista de tareas")
+export const borrarElemento = async (req, res) =>{
+    try {
+        //Buscar una tarea en la coleccion de la base de datos por su id, y luego borrar.
+        await Tarea.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            mensaje: "La tarea fue eliminada correctamente"
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({
+            mensaje: "Error al borrar la tarea"
+        })
+    }
 }
